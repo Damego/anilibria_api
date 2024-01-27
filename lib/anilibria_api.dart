@@ -4,7 +4,7 @@ library;
 export 'src/client/client.dart';
 
 // http
-export 'src/http/base.dart';
+export 'src/http/base_http.dart';
 export 'src/http/anilibria.dart';
 export 'src/http/converters.dart';
 

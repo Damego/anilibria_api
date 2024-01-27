@@ -3,6 +3,13 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:anilibria_api/src/http/converters.dart';
 
+class HttpException implements Exception {
+  final int code;
+  final String message;
+
+  HttpException(this.code, this.message);
+}
+
 class BaseHttpClient {
   final http.Client _client;
   final String _baseUrl;
@@ -39,6 +46,11 @@ class BaseHttpClient {
       throw Exception("no res");
     }
 
-    return jsonDecode(response.body);
+    var decodedData = jsonDecode(response.body);
+    if (decodedData is Map && decodedData["error"] != null) {
+      throw HttpException(decodedData["code"], decodedData["message"]);
+    }
+
+    return decodedData;
   }
 }
