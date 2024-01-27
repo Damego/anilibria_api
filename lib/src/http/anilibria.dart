@@ -106,7 +106,7 @@ class AnilibriaHttpClient extends BaseHttpClient {
         as Dict;
   }
 
-  Future<List<Dict>> getTitleSchedule({
+  Future<List<Dict>> getSchedule({
     List<String>? filter,
     List<String>? remove,
     List<String>? include,
@@ -316,7 +316,7 @@ class AnilibriaHttpClient extends BaseHttpClient {
     return await super.request("GET", "/v3/team") as Dict;
   }
 
-  Future<List<Dict>> getTorrentSeedStats({
+  Future<Dict> getTorrentSeedStats({
     List<String>? users,
     List<String>? filter,
     List<String>? remove,
@@ -339,19 +339,19 @@ class AnilibriaHttpClient extends BaseHttpClient {
       "items_per_page": itemsPerPage,
     };
     return await super.request("GET", "/v3/torrent/seed_stats", params: payload)
-        as List<Dict>;
+        as Dict;
   }
 
   // todo: add support for /torrent/rss endpoint
 
-  Future<Dict> signIn(String login, String password) async {
+  Future<String> signIn(String login, String password) async {
     // todo: make own http client
     var res = await http.post(
         Uri.parse("https://www.anilibria.tv/public/login.php"),
         body: {'mail': login, "password": password});
 
     var data = jsonDecode(res.body);
-    return await getUser(data["session_id"]);
+    return data["session_id"];
   }
 
   Future<Dict> getUser(String sessionId) async {
