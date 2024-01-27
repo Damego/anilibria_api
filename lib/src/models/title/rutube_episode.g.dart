@@ -7,10 +7,11 @@ part of 'rutube_episode.dart';
 // **************************************************************************
 
 RutubeEpisode _$RutubeEpisodeFromJson(Map<String, dynamic> json) =>
-    RutubeEpisode()
-      ..episode = json['episode'] as int?
-      ..createdTimestamp = json['created_timestamp'] as int?
-      ..rutubeId = json['rutube_id'] as String?;
+    RutubeEpisode(
+      json['episode'] as int?,
+      json['created_timestamp'] as int?,
+      json['rutube_id'] as String?,
+    );
 
 Map<String, dynamic> _$RutubeEpisodeToJson(RutubeEpisode instance) =>
     <String, dynamic>{

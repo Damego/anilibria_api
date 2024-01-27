@@ -5,9 +5,9 @@ part 'posters.g.dart';
 
 @JsonSerializable()
 class Posters {
-  Poster small;
-  Poster medium;
-  Poster original;
+  final Poster small;
+  final Poster medium;
+  final Poster original;
 
   Posters(this.small, this.medium, this.original);
 

@@ -6,8 +6,8 @@ part 'title_franchise.g.dart';
 
 @JsonSerializable()
 class TitleFranchise {
-  Franchise? franchise;
-  List<FranchiseRelease>? releases;
+  final Franchise? franchise;
+  final List<FranchiseRelease>? releases;
 
   TitleFranchise(this.franchise, this.releases);
 

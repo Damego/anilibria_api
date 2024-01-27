@@ -4,12 +4,12 @@ part 'type.g.dart';
 
 @JsonSerializable()
 class Type {
-  int? code;
-  String? string;
+  final int? code;
+  final String? string;
   @JsonKey(name: 'full_string')
-  String? fullString;
-  int? episodes;
-  int? length;
+  final String? fullString;
+  final int? episodes;
+  final int? length;
 
   Type(this.code, this.episodes, this.fullString, this.length, this.string);
 

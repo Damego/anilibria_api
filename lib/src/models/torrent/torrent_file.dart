@@ -4,9 +4,9 @@ part 'torrent_file.g.dart';
 
 @JsonSerializable()
 class TorrentFile {
-  String? file;
-  int? size;
-  int? offset;
+  final String? file;
+  final int? size;
+  final int? offset;
 
   TorrentFile(this.file, this.size, this.offset);
 

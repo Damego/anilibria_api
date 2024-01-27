@@ -9,11 +9,11 @@ part 'player.g.dart';
 @JsonSerializable()
 class Player {
   @JsonKey(name: 'alternative_player')
-  String? alternativePlayer;
-  String? host;
-  Episodes? episodes;
-  Map<String, Episode>? list; // union types???????????
-  Map<String, RutubeEpisode> rutube;
+  final String? alternativePlayer;
+  final String? host;
+  final Episodes? episodes;
+  final Map<String, Episode>? list; // union types???????????
+  final Map<String, RutubeEpisode> rutube;
 
   Player(
       this.alternativePlayer, this.host, this.episodes, this.list, this.rutube);

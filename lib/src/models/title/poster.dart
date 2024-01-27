@@ -4,9 +4,9 @@ part 'poster.g.dart';
 
 @JsonSerializable()
 class Poster {
-  String? url;
+  final String? url;
   @JsonKey(name: 'raw_base64_file')
-  String? rawBase64File;
+  final String? rawBase64File;
 
   Poster(this.url, this.rawBase64File);
 

@@ -8,22 +8,22 @@ part 'torrent.g.dart';
 @JsonSerializable()
 class Torrent {
   @JsonKey(name: 'torrent_id')
-  int? torrentId;
-  Episodes? episodes;
-  Quality? quality;
-  int? leechers;
-  int? seeders;
-  int? downloads;
+  final int? torrentId;
+  final Episodes? episodes;
+  final Quality? quality;
+  final int? leechers;
+  final int? seeders;
+  final int? downloads;
   @JsonKey(name: 'total_size')
-  int? totalSize;
-  String? url;
+  final int? totalSize;
+  final String? url;
   @JsonKey(name: 'uploaded_timestamp')
-  int? uploadedTimestamp;
-  TorrentMetadata? metadata;
+  final int? uploadedTimestamp;
+  final TorrentMetadata? metadata;
   @JsonKey(name: 'raw_base64_file')
-  String? rawBase64File;
-  String? hash;
-  String? magnet;
+  final String? rawBase64File;
+  final String? hash;
+  final String? magnet;
 
   Torrent(
     this.torrentId,

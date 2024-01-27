@@ -4,8 +4,8 @@ part 'skips.g.dart';
 
 @JsonSerializable()
 class Skips {
-  List<int>? opening;
-  List<int>? ending;
+  final List<int>? opening;
+  final List<int>? ending;
 
   Skips(this.opening, this.ending);
 

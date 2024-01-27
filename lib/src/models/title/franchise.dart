@@ -4,8 +4,8 @@ part 'franchise.g.dart';
 
 @JsonSerializable()
 class Franchise {
-  String? id;
-  String? name;
+  final String? id;
+  final String? name;
 
   Franchise(this.id, this.name);
 

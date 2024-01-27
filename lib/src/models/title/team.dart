@@ -4,11 +4,11 @@ part 'team.g.dart';
 
 @JsonSerializable()
 class Team {
-  List<String>? voice;
-  List<String>? translator;
-  List<String>? editing;
-  List<String>? decor;
-  List<String>? timing;
+  final List<String>? voice;
+  final List<String>? translator;
+  final List<String>? editing;
+  final List<String>? decor;
+  final List<String>? timing;
 
   Team(this.voice, this.translator, this.editing, this.decor, this.timing);
 

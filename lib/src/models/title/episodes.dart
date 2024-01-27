@@ -4,9 +4,9 @@ part 'episodes.g.dart';
 
 @JsonSerializable()
 class Episodes {
-  double? first;
-  double? last;
-  String? string;
+  final double? first;
+  final double? last;
+  final String? string;
 
   Episodes(this.first, this.last, this.string);
 

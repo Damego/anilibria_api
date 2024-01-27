@@ -4,17 +4,17 @@ part 'user.g.dart';
 
 @JsonSerializable()
 class User {
-  String? login;
-  String? nickname;
-  String? email;
+  final String? login;
+  final String? nickname;
+  final String? email;
   @JsonKey(name: "avatar_original")
-  String? avatarOriginal;
+  final String? avatarOriginal;
   @JsonKey(name: "avatar_thumbnail")
-  String? avatarThumbnail;
+  final String? avatarThumbnail;
   @JsonKey(name: "vk_id")
-  String? vkId;
+  final String? vkId;
   @JsonKey(name: "patreon_id")
-  String? patreonId;
+  final String? patreonId;
 
   User(this.login, this.nickname, this.email, this.avatarOriginal,
       this.avatarThumbnail, this.vkId, this.patreonId);

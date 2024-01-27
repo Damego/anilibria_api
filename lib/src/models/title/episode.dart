@@ -6,13 +6,13 @@ part 'episode.g.dart';
 
 @JsonSerializable()
 class Episode {
-  int? episode;
+  final int? episode;
   @JsonKey(name: 'created_timestamp')
-  int? createdTimestamp;
-  Hls? hls;
-  String? preview;
-  Skips? skips;
-  String? uuid;
+  final int? createdTimestamp;
+  final Hls? hls;
+  final String? preview;
+  final Skips? skips;
+  final String? uuid;
 
   Episode(this.episode, this.createdTimestamp, this.hls, this.preview,
       this.skips, this.uuid);

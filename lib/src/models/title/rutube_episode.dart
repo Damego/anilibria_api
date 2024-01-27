@@ -4,12 +4,12 @@ part 'rutube_episode.g.dart';
 
 @JsonSerializable()
 class RutubeEpisode {
-  int? episode;
+  final int? episode;
   @JsonKey(name: 'created_timestamp')
-  int? createdTimestamp;
+  final int? createdTimestamp;
   @JsonKey(name: 'rutube_id')
-  String? rutubeId;
-  RutubeEpisode();
+  final String? rutubeId;
+  RutubeEpisode(this.episode, this.createdTimestamp, this.rutubeId);
 
   factory RutubeEpisode.fromJson(Map<String, dynamic> json) =>
       _$RutubeEpisodeFromJson(json);

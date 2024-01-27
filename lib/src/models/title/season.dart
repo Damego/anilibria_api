@@ -4,11 +4,11 @@ part 'season.g.dart';
 
 @JsonSerializable()
 class Season {
-  String? string;
-  int? code;
-  int? year;
+  final String? string;
+  final int? code;
+  final int? year;
   @JsonKey(name: 'week_day')
-  int? weekDay;
+  final int? weekDay;
 
   Season(this.string, this.code, this.year, this.weekDay);
 

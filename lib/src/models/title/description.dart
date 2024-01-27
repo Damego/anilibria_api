@@ -4,10 +4,10 @@ part 'description.g.dart';
 
 @JsonSerializable()
 class Description {
-  String? html;
+  final String? html;
   @JsonKey(name: 'no_view_order')
-  String? noViewOrder;
-  String? plain;
+  final String? noViewOrder;
+  final String? plain;
 
   Description(this.html, this.noViewOrder, this.plain);
 

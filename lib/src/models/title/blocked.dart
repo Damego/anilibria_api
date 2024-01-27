@@ -4,8 +4,8 @@ part 'blocked.g.dart';
 
 @JsonSerializable()
 class Blocked {
-  bool? blocked;
-  bool? bakanim;
+  final bool? blocked;
+  final bool? bakanim;
 
   Blocked(this.blocked, this.bakanim);
 

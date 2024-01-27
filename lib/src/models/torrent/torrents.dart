@@ -6,8 +6,8 @@ part 'torrents.g.dart';
 
 @JsonSerializable(includeIfNull: true)
 class Torrents {
-  Episodes? episodes;
-  List<Torrent>? list;
+  final Episodes? episodes;
+  final List<Torrent>? list;
 
   Torrents(this.episodes, this.list);
 

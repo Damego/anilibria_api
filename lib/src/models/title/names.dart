@@ -4,9 +4,9 @@ part 'names.g.dart';
 
 @JsonSerializable()
 class Names {
-  String? ru;
-  String? en;
-  String? alternative;
+  final String? ru;
+  final String? en;
+  final String? alternative;
 
   Names(this.ru, this.en, this.alternative);
 

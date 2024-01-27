@@ -14,26 +14,26 @@ part 'title.g.dart';
 
 @JsonSerializable(includeIfNull: true)
 class Title {
-  int? id;
-  String? code;
-  Names? names;
-  String? announce;
-  Status? status;
-  Posters? posters;
-  int? updated;
+  final int? id;
+  final String? code;
+  final Names? names;
+  final String? announce;
+  final Status? status;
+  final Posters? posters;
+  final int? updated;
   @JsonKey(name: 'last_change')
-  int? lastChange;
-  Type? type;
-  List<String>? genres;
-  Team? team;
-  Season? season;
-  String? description;
+  final int? lastChange;
+  final Type? type;
+  final List<String>? genres;
+  final Team? team;
+  final Season? season;
+  final String? description;
   @JsonKey(name: 'in_favourites')
-  int? inFavourites;
-  Blocked? blocked;
-  Player? player;
-  Torrents? torrents;
-  List<TitleFranchise>? franchises;
+  final int? inFavourites;
+  final Blocked? blocked;
+  final Player? player;
+  final Torrents? torrents;
+  final List<TitleFranchise>? franchises;
 
   Title(
     this.id,

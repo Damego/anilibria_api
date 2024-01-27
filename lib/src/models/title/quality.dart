@@ -4,12 +4,12 @@ part 'quality.g.dart';
 
 @JsonSerializable()
 class Quality {
-  String? string;
-  String? type;
-  String? resolution;
-  String? encoder;
+  final String? string;
+  final String? type;
+  final String? resolution;
+  final String? encoder;
   @JsonKey(name: 'lq_audio')
-  bool? lqAudio;
+  final bool? lqAudio;
 
   Quality(this.string, this.type, this.resolution, this.encoder, this.lqAudio);
 

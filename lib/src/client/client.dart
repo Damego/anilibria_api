@@ -201,7 +201,7 @@ class AnilibriaClient {
     int? page,
     int? itemsPerPage,
   }) async {
-    var data = await _http.searchTitles(
+    final data = await _http.searchTitles(
       search: search,
       years: years,
       types: types,
@@ -245,7 +245,7 @@ class AnilibriaClient {
       throw "Should be provided one of query or simpleQuery parameter!";
     }
 
-    var data = await _http.searchTitlesAdvanced(
+    final data = await _http.searchTitlesAdvanced(
       query: query,
       simpleQuery: simpleQuery,
       filter: filter,
@@ -267,7 +267,7 @@ class AnilibriaClient {
     List<String>? filter,
     List<String>? remove,
   }) async {
-    var data =
+    final data =
         await _http.getTitleFranchise(titleId, filter: filter, remove: remove);
     return TitleFranchise.fromJson(data);
   }
@@ -280,7 +280,7 @@ class AnilibriaClient {
     int? page,
     int? itemsPerPage,
   }) async {
-    var data = await _http.getAllFranchises(
+    final data = await _http.getAllFranchises(
       filter: filter,
       remove: remove,
       limit: limit,
@@ -353,7 +353,7 @@ class AnilibriaClient {
   }
 
   Future<Team> getTeam() async {
-    var data = await _http.getTeam();
+    final data = await _http.getTeam();
     return Team.fromJson(data);
   }
 
@@ -372,7 +372,7 @@ class AnilibriaClient {
     int? page,
     int? itemsPerPage,
   }) async {
-    var data = await _http.getTorrentSeedStats(
+    final data = await _http.getTorrentSeedStats(
       users: users,
       filter: filter,
       remove: remove,

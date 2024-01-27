@@ -5,10 +5,10 @@ part 'franchise_release.g.dart';
 
 @JsonSerializable()
 class FranchiseRelease {
-  int? id;
-  String? code;
-  Names? names;
-  int? ordinal;
+  final int? id;
+  final String? code;
+  final Names? names;
+  final int? ordinal;
 
   FranchiseRelease(this.id, this.code, this.names, this.ordinal);
 
