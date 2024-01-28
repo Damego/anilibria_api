@@ -344,7 +344,7 @@ class AnilibriaClient {
     return ListPagination.fromJson(data, (json) => Feed.fromJson(json as Dict));
   }
 
-  Future<List<dynamic>> getYears() {
+  Future<List<int>> getYears() {
     return _http.getYears();
   }
 

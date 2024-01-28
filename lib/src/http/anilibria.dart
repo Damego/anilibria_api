@@ -162,7 +162,7 @@ class AnilibriaHttpClient extends BaseHttpClient {
         as List<Dict>;
   }
 
-  Future<List<Dict>> getFeed({
+  Future<Dict> getFeed({
     List<String>? filter,
     List<String>? remove,
     List<String>? include,
@@ -184,16 +184,19 @@ class AnilibriaHttpClient extends BaseHttpClient {
       "page": page,
       "items_per_page": itemsPerPage,
     };
-    return await super.request("GET", "/v3/feed", params: payload)
-        as List<Dict>;
+    return await super.request("GET", "/v3/feed", params: payload) as Dict;
   }
 
   Future<List<int>> getYears() async {
-    return await super.request("GET", "/v3/years") as List<int>;
+    List<dynamic> years =
+        await super.request("GET", "/v3/years") as List<dynamic>;
+    return [for (var year in years) year as int];
   }
 
   Future<List<String>> getGenres() async {
-    return await super.request("GET", "/v3/genres") as List<String>;
+    List<dynamic> genres =
+        await super.request("GET", "/v3/genres") as List<dynamic>;
+    return [for (var genre in genres) genre as String];
   }
 
   Future<Dict> searchTitles({
