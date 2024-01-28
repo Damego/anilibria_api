@@ -5,7 +5,7 @@ part 'list_pagination.g.dart';
 
 @JsonSerializable(genericArgumentFactories: true)
 class ListPagination<T> {
-  final Pagination pagination;
+  final Pagination? pagination;
   final List<T> list;
 
   ListPagination(this.pagination, this.list);

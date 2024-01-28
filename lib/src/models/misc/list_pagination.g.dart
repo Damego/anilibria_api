@@ -11,7 +11,9 @@ ListPagination<T> _$ListPaginationFromJson<T>(
   T Function(Object? json) fromJsonT,
 ) =>
     ListPagination<T>(
-      Pagination.fromJson(json['pagination'] as Map<String, dynamic>),
+      json['pagination'] == null
+          ? null
+          : Pagination.fromJson(json['pagination'] as Map<String, dynamic>),
       (json['list'] as List<dynamic>).map(fromJsonT).toList(),
     );
 

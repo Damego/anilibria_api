@@ -317,34 +317,34 @@ class AnilibriaClient {
     return [for (final json in data) YouTubeVideo.fromJson(json)];
   }
 
-  /// Возвращает список Title или YouTubeVideo
-  // Future<ListPagination> getFeed({
-  //   List<String>? filter,
-  //   List<String>? remove,
-  //   List<String>? include,
-  //   int? limit,
-  //   int? since,
-  //   String? descriptionType,
-  //   int? after,
-  //   int? page,
-  //   int? itemsPerPage,
-  // }) async {
-  //   final data = await _http.getFeed(
-  //     filter: filter,
-  //     remove: remove,
-  //     include: include,
-  //     limit: limit,
-  //     since: since,
-  //     descriptionType: descriptionType,
-  //     after: after,
-  //     page: page,
-  //     itemsPerPage: itemsPerPage,
-  //   );
+  Future<ListPagination<Feed>> getFeed({
+    List<String>? filter,
+    List<String>? remove,
+    List<String>? include,
+    int? limit,
+    int? since,
+    String? descriptionType,
+    int? after,
+    int? page,
+    int? itemsPerPage,
+  }) async {
+    final data = await _http.getFeed(
+      filter: filter,
+      remove: remove,
+      include: include,
+      limit: limit,
+      since: since,
+      descriptionType: descriptionType,
+      after: after,
+      page: page,
+      itemsPerPage: itemsPerPage,
+    );
+    print(jsonEncode(data));
 
-  // todo: troubles with typing
-  // }
+    return ListPagination.fromJson(data, (json) => Feed.fromJson(json as Dict));
+  }
 
-  Future<List<int>> getYears() {
+  Future<List<dynamic>> getYears() {
     return _http.getYears();
   }
 
