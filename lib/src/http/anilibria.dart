@@ -3,9 +3,6 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:anilibria_api/src/http/base_http.dart';
 
-typedef Dict = Map<String, Object?>;
-final String apiUrl = "api.anilibria.tv";
-
 class AnilibriaHttpClient extends BaseHttpClient {
   AnilibriaHttpClient() : super(apiUrl);
 

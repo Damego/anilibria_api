@@ -1,5 +1,6 @@
 import 'package:anilibria_api/src/http/anilibria.dart';
 import 'package:anilibria_api/src/models/models.dart';
+import 'package:anilibria_api/types.dart';
 
 class AnilibriaClient {
   final AnilibriaHttpClient _http;
