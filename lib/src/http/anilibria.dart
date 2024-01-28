@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:anilibria_api/consts.dart';
+import 'package:anilibria_api/types.dart';
 import 'package:http/http.dart' as http;
 import 'package:anilibria_api/src/http/base_http.dart';
 
