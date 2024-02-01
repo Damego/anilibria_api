@@ -1,14 +1,5 @@
+import 'package:anilibria_api/src/models/models.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:anilibria_api/src/models/title/blocked.dart';
-import 'package:anilibria_api/src/models/title/names.dart';
-import 'package:anilibria_api/src/models/title/player.dart';
-import 'package:anilibria_api/src/models/title/posters.dart';
-import 'package:anilibria_api/src/models/title/season.dart';
-import 'package:anilibria_api/src/models/title/status.dart';
-import 'package:anilibria_api/src/models/title/team.dart';
-import 'package:anilibria_api/src/models/title/title_franchise.dart';
-import 'package:anilibria_api/src/models/torrent/torrents.dart';
-import 'package:anilibria_api/src/models/title/type.dart';
 
 part 'title.g.dart';
 
@@ -23,11 +14,10 @@ class Title {
   final int? updated;
   @JsonKey(name: 'last_change')
   final int? lastChange;
-  final Type? type;
+  final TitleType? type;
   final List<String>? genres;
   final Team? team;
   final Season? season;
-  final String? description;
   @JsonKey(name: 'in_favourites')
   final int? inFavourites;
   final Blocked? blocked;

@@ -1,9 +1,9 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'type.g.dart';
+part 'title_type.g.dart';
 
 @JsonSerializable()
-class Type {
+class TitleType {
   final int? code;
   final String? string;
   @JsonKey(name: 'full_string')
@@ -11,7 +11,9 @@ class Type {
   final int? episodes;
   final int? length;
 
-  Type(this.code, this.episodes, this.fullString, this.length, this.string);
+  TitleType(
+      this.code, this.episodes, this.fullString, this.length, this.string);
 
-  factory Type.fromJson(Map<String, dynamic> json) => _$TypeFromJson(json);
+  factory TitleType.fromJson(Map<String, dynamic> json) =>
+      _$TitleTypeFromJson(json);
 }

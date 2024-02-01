@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'type.dart';
+part of 'title_type.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-Type _$TypeFromJson(Map<String, dynamic> json) => Type(
+TitleType _$TitleTypeFromJson(Map<String, dynamic> json) => TitleType(
       json['code'] as int?,
       json['episodes'] as int?,
       json['full_string'] as String?,
@@ -14,7 +14,7 @@ Type _$TypeFromJson(Map<String, dynamic> json) => Type(
       json['string'] as String?,
     );
 
-Map<String, dynamic> _$TypeToJson(Type instance) => <String, dynamic>{
+Map<String, dynamic> _$TitleTypeToJson(TitleType instance) => <String, dynamic>{
       'code': instance.code,
       'string': instance.string,
       'full_string': instance.fullString,

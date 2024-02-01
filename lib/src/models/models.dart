@@ -24,7 +24,7 @@ export 'title/status.dart';
 export 'title/team.dart';
 export 'title/title_franchise.dart';
 export 'title/title.dart';
-export 'title/type.dart';
+export 'title/title_type.dart';
 
 export 'torrent/torrent.dart';
 export 'torrent/torrent_file.dart';

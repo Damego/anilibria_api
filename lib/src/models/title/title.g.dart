@@ -23,7 +23,7 @@ Title _$TitleFromJson(Map<String, dynamic> json) => Title(
       json['last_change'] as int?,
       json['type'] == null
           ? null
-          : Type.fromJson(json['type'] as Map<String, dynamic>),
+          : TitleType.fromJson(json['type'] as Map<String, dynamic>),
       (json['genres'] as List<dynamic>?)?.map((e) => e as String).toList(),
       json['team'] == null
           ? null
