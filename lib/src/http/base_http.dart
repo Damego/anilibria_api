@@ -32,7 +32,6 @@ class BaseHttpClient {
     } else {
       url = Uri.https(_baseUrl, path);
     }
-    print(url.toString());
     http.Response? response;
 
     if (method == "GET") {
@@ -50,10 +49,13 @@ class BaseHttpClient {
     }
 
     var decodedData = jsonDecode(response.body);
-    if (decodedData is Map && decodedData["error"] != null) {
-      throw HttpException(decodedData["code"], decodedData["message"]);
-    }
-
+    catchError(decodedData);
     return decodedData;
+  }
+
+  void catchError(dynamic data) {
+    if (data is Map && data["error"] != null) {
+      throw HttpException(data["error"]["code"], data["error"]["message"]);
+    }
   }
 }
