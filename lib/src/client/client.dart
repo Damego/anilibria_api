@@ -1,21 +1,28 @@
-import 'package:anilibria_api/src/http/anilibria.dart';
+import 'dart:convert';
+
+import 'package:anilibria_api/src/http/api.dart';
+import 'package:anilibria_api/src/http/site.dart';
+import 'package:anilibria_api/src/models/events/base_event.dart';
 import 'package:anilibria_api/src/models/models.dart';
 import 'package:anilibria_api/types.dart';
 
 class AnilibriaClient {
-  final AnilibriaHttpClient _http;
+  final ApiHttpClient _apiHttp;
+  final SiteHttpClient _siteHttp;
 
-  AnilibriaClient() : _http = AnilibriaHttpClient();
+  AnilibriaClient({String? siteUrl})
+      : _apiHttp = ApiHttpClient(),
+        _siteHttp = SiteHttpClient(siteUrl ?? "test.anilib.top"); // TODO
 
   // * User region
 
   Future<User> signIn(String login, String password) async {
-    var sessionId = await _http.signIn(login, password);
-    return User.fromJson(await _http.getUser(sessionId));
+    var sessionId = await _siteHttp.signIn(login, password);
+    return User.fromJson(await _apiHttp.getUser(sessionId));
   }
 
   Future<User> getUser(String sessionId) async {
-    final data = await _http.getUser(sessionId);
+    final data = await _apiHttp.getUser(sessionId);
     return User.fromJson(data);
   }
 
@@ -28,7 +35,7 @@ class AnilibriaClient {
       int? after,
       int? page,
       int? itemsPerPage}) async {
-    final data = await _http.getUserFavorites(sessionId,
+    final data = await _apiHttp.getUserFavorites(sessionId,
         filter: filter,
         remove: remove,
         include: include,
@@ -42,12 +49,12 @@ class AnilibriaClient {
 
   Future<void> addUserFavoriteTitle(String sessionId, int titleId) async {
     // todo: return type for
-    await _http.addUserFavoriteTitle(sessionId, titleId);
+    await _apiHttp.addUserFavoriteTitle(sessionId, titleId);
   }
 
   Future<void> removeUserFavoriteTitle(String sessionId, int titleId) async {
     // todo: return type for
-    var res = await _http.removeUserFavoriteTitle(sessionId, titleId);
+    var res = await _apiHttp.removeUserFavoriteTitle(sessionId, titleId);
     print(res.toString());
   }
 
@@ -64,7 +71,7 @@ class AnilibriaClient {
     List<String>? include,
     String? descriptionType,
   }) async {
-    final data = await _http.getTitle(
+    final data = await _apiHttp.getTitle(
         id: id,
         code: code,
         torrentId: torrentId,
@@ -86,7 +93,7 @@ class AnilibriaClient {
     int? page,
     int? itemsPerPage,
   }) async {
-    final data = await _http.getTitleList(
+    final data = await _apiHttp.getTitleList(
         idList: idList,
         codeList: codeList,
         torrentIdList: torrentIdList,
@@ -109,7 +116,7 @@ class AnilibriaClient {
     int? page,
     int? itemsPerPage,
   }) async {
-    final data = await _http.getTitleUpdates(
+    final data = await _apiHttp.getTitleUpdates(
       filter: filter,
       remove: remove,
       include: include,
@@ -133,7 +140,7 @@ class AnilibriaClient {
     int? page,
     int? itemsPerPage,
   }) async {
-    final data = await _http.getTitleChanges(
+    final data = await _apiHttp.getTitleChanges(
       filter: filter,
       remove: remove,
       include: include,
@@ -154,7 +161,7 @@ class AnilibriaClient {
     List<int>? days,
     String? descriptionType,
   }) async {
-    final data = await _http.getSchedule(
+    final data = await _apiHttp.getSchedule(
       filter: filter,
       remove: remove,
       include: include,
@@ -170,7 +177,7 @@ class AnilibriaClient {
     List<String>? include,
     String? descriptionType,
   }) async {
-    final data = await _http.getRandomTitle(
+    final data = await _apiHttp.getRandomTitle(
       filter: filter,
       remove: remove,
       include: include,
@@ -202,7 +209,7 @@ class AnilibriaClient {
     int? page,
     int? itemsPerPage,
   }) async {
-    final data = await _http.searchTitles(
+    final data = await _apiHttp.searchTitles(
       search: search,
       years: years,
       types: types,
@@ -246,7 +253,7 @@ class AnilibriaClient {
       throw "Should be provided one of query or simpleQuery parameter!";
     }
 
-    final data = await _http.searchTitlesAdvanced(
+    final data = await _apiHttp.searchTitlesAdvanced(
       query: query,
       simpleQuery: simpleQuery,
       filter: filter,
@@ -268,8 +275,8 @@ class AnilibriaClient {
     List<String>? filter,
     List<String>? remove,
   }) async {
-    final data =
-        await _http.getTitleFranchise(titleId, filter: filter, remove: remove);
+    final data = await _apiHttp.getTitleFranchise(titleId,
+        filter: filter, remove: remove);
     return TitleFranchise.fromJson(data);
   }
 
@@ -281,7 +288,7 @@ class AnilibriaClient {
     int? page,
     int? itemsPerPage,
   }) async {
-    final data = await _http.getAllFranchises(
+    final data = await _apiHttp.getAllFranchises(
       filter: filter,
       remove: remove,
       limit: limit,
@@ -306,7 +313,7 @@ class AnilibriaClient {
     int? page,
     int? itemsPerPage,
   }) async {
-    final data = await _http.getYoutube(
+    final data = await _apiHttp.getYoutube(
       filter: filter,
       remove: remove,
       limit: limit,
@@ -329,7 +336,7 @@ class AnilibriaClient {
     int? page,
     int? itemsPerPage,
   }) async {
-    final data = await _http.getFeed(
+    final data = await _apiHttp.getFeed(
       filter: filter,
       remove: remove,
       include: include,
@@ -346,15 +353,15 @@ class AnilibriaClient {
   }
 
   Future<List<int>> getYears() {
-    return _http.getYears();
+    return _apiHttp.getYears();
   }
 
   Future<List<String>> getGenres() {
-    return _http.getGenres();
+    return _apiHttp.getGenres();
   }
 
   Future<Team> getTeam() async {
-    final data = await _http.getTeam();
+    final data = await _apiHttp.getTeam();
     return Team.fromJson(data);
   }
 
@@ -373,7 +380,7 @@ class AnilibriaClient {
     int? page,
     int? itemsPerPage,
   }) async {
-    final data = await _http.getTorrentSeedStats(
+    final data = await _apiHttp.getTorrentSeedStats(
       users: users,
       filter: filter,
       remove: remove,

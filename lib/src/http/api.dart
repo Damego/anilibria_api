@@ -1,12 +1,9 @@
-import 'dart:convert';
-
 import 'package:anilibria_api/consts.dart';
 import 'package:anilibria_api/types.dart';
-import 'package:http/http.dart' as http;
 import 'package:anilibria_api/src/http/base_http.dart';
 
-class AnilibriaHttpClient extends BaseHttpClient {
-  AnilibriaHttpClient() : super(apiUrl);
+class ApiHttpClient extends BaseHttpClient {
+  ApiHttpClient() : super(apiUrl);
 
   Future<Dict> getTitle({
     String? id,
@@ -345,16 +342,6 @@ class AnilibriaHttpClient extends BaseHttpClient {
   }
 
   // todo: add support for /torrent/rss endpoint
-
-  Future<String> signIn(String login, String password) async {
-    // todo: make own http client
-    var res = await http.post(
-        Uri.parse("https://www.anilibria.tv/public/login.php"),
-        body: {'mail': login, "password": password});
-
-    var data = jsonDecode(res.body);
-    return data["session_id"];
-  }
 
   Future<Dict> getUser(String sessionId) async {
     return await request("GET", "/v3/user", params: {"session": sessionId})
