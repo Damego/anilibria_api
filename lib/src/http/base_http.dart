@@ -8,6 +8,9 @@ class HttpException implements Exception {
   final String message;
 
   HttpException(this.code, this.message);
+
+  @override
+  String toString() => "HttpException(code: $code, message: $message)";
 }
 
 class BaseHttpClient {
