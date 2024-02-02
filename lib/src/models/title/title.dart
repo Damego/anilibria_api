@@ -1,4 +1,5 @@
 import 'package:anilibria_api/src/models/models.dart';
+import 'package:anilibria_api/src/models/utils.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'title.g.dart';
@@ -18,6 +19,7 @@ class Title {
   final List<String>? genres;
   final Team? team;
   final Season? season;
+  final Description? description;
   @JsonKey(name: 'in_favourites')
   final int? inFavourites;
   final Blocked? blocked;
@@ -46,7 +48,9 @@ class Title {
     this.franchises,
   );
 
-  static Title fromJsonModel(Object? json) =>
-      Title.fromJson(json as Map<String, dynamic>);
+  static fromJsonModel(Map<String, dynamic> json, String? descriptionType) {
+    return Title.fromJson(normalizeTitle(json, descriptionType));
+  }
+
   factory Title.fromJson(Map<String, dynamic> json) => _$TitleFromJson(json);
 }

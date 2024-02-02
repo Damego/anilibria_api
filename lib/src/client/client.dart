@@ -44,7 +44,8 @@ class AnilibriaClient {
         after: after,
         page: page,
         itemsPerPage: itemsPerPage);
-    return ListPagination<Title>.fromJson(data, Title.fromJsonModel);
+    return ListPagination<Title>.fromJson(
+        data, (json) => Title.fromJsonModel(json as Dict, descriptionType));
   }
 
   Future<void> addUserFavoriteTitle(String sessionId, int titleId) async {
@@ -79,7 +80,7 @@ class AnilibriaClient {
         remove: remove,
         include: include,
         descriptionType: descriptionType);
-    return Title.fromJson(data);
+    return Title.fromJsonModel(data, descriptionType);
   }
 
   Future<ListPagination<Title>> getTitleList({
@@ -103,7 +104,8 @@ class AnilibriaClient {
         descriptionType: descriptionType,
         page: page,
         itemsPerPage: itemsPerPage);
-    return ListPagination<Title>.fromJson(data, Title.fromJsonModel);
+    return ListPagination<Title>.fromJson(
+        data, (json) => Title.fromJsonModel(json as Dict, descriptionType));
   }
 
   Future<ListPagination<Title>> getTitleUpdates({
@@ -126,7 +128,8 @@ class AnilibriaClient {
       page: page,
       itemsPerPage: itemsPerPage,
     );
-    return ListPagination<Title>.fromJson(data, Title.fromJsonModel);
+    return ListPagination<Title>.fromJson(
+        data, (json) => Title.fromJsonModel(json as Dict, descriptionType));
   }
 
   Future<ListPagination<Title>> getTitleChanges({
@@ -151,7 +154,8 @@ class AnilibriaClient {
       page: page,
       itemsPerPage: itemsPerPage,
     );
-    return ListPagination<Title>.fromJson(data, Title.fromJsonModel);
+    return ListPagination<Title>.fromJson(
+        data, (json) => Title.fromJsonModel(json as Dict, descriptionType));
   }
 
   Future<List<Schedule>> getSchedule({
@@ -168,7 +172,9 @@ class AnilibriaClient {
       days: days,
       descriptionType: descriptionType,
     );
-    return [for (final json in data) Schedule.fromJson(json)];
+    return [
+      for (final json in data) Schedule.fromJsonModel(json, descriptionType)
+    ];
   }
 
   Future<Title> getRandomTitle({
@@ -183,7 +189,7 @@ class AnilibriaClient {
       include: include,
       descriptionType: descriptionType,
     );
-    return Title.fromJson(data);
+    return Title.fromJsonModel(data, descriptionType);
   }
 
   Future<ListPagination<Title>> searchTitles({
@@ -232,7 +238,8 @@ class AnilibriaClient {
       page: page,
       itemsPerPage: itemsPerPage,
     );
-    return ListPagination.fromJson(data, Title.fromJsonModel);
+    return ListPagination.fromJson(
+        data, (json) => Title.fromJsonModel(json as Dict, descriptionType));
   }
 
   Future<ListPagination<Title>> searchTitlesAdvanced({
@@ -267,7 +274,8 @@ class AnilibriaClient {
       page: page,
       itemsPerPage: itemsPerPage,
     );
-    return ListPagination.fromJson(data, Title.fromJsonModel);
+    return ListPagination.fromJson(
+        data, (json) => Title.fromJsonModel(json as Dict, descriptionType));
   }
 
   Future<TitleFranchise> getTitleFranchise(
@@ -347,9 +355,8 @@ class AnilibriaClient {
       page: page,
       itemsPerPage: itemsPerPage,
     );
-    print(jsonEncode(data));
-
-    return ListPagination.fromJson(data, (json) => Feed.fromJson(json as Dict));
+    return ListPagination.fromJson(
+        data, (json) => Feed.fromJsonModel(json as Dict, descriptionType));
   }
 
   Future<List<int>> getYears() {

@@ -31,7 +31,9 @@ Title _$TitleFromJson(Map<String, dynamic> json) => Title(
       json['season'] == null
           ? null
           : Season.fromJson(json['season'] as Map<String, dynamic>),
-      json['description'] as String?,
+      json['description'] == null
+          ? null
+          : Description.fromJson(json['description'] as Map<String, dynamic>),
       json['in_favourites'] as int?,
       json['blocked'] == null
           ? null

@@ -1,4 +1,5 @@
 import 'package:anilibria_api/src/models/models.dart';
+import 'package:anilibria_api/src/models/utils.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'schedule.g.dart';
@@ -12,6 +13,14 @@ class Schedule {
   final List<Title>? list;
 
   Schedule(this.day, this.list);
+
+  static fromJsonModel(Map<String, dynamic> json, String? descriptionType) {
+    if (json["list"] != null) {
+      json["list"] = [
+        for (final title in json["list"]) normalizeTitle(title, descriptionType)
+      ];
+    }
+  }
 
   factory Schedule.fromJson(Map<String, dynamic> json) =>
       _$ScheduleFromJson(json);
