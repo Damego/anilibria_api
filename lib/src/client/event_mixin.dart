@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:anilibria_api/anilibria_api.dart';
 import 'package:anilibria_api/src/models/events/base_event.dart';
-import 'package:anilibria_api/stream_extension.dart';
+import 'package:anilibria_api/src/stream_extension.dart';
 
 mixin EventMixin {
   Stream<BaseEvent> get _onEvent => (this as AnilibriaClient).events;

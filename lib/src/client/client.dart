@@ -1,12 +1,10 @@
-import 'dart:convert';
-
 import 'package:anilibria_api/src/client/event_mixin.dart';
 import 'package:anilibria_api/src/http/api.dart';
 import 'package:anilibria_api/src/http/site.dart';
 import 'package:anilibria_api/src/models/events/base_event.dart';
 import 'package:anilibria_api/src/models/models.dart';
 import 'package:anilibria_api/src/websocket/client.dart';
-import 'package:anilibria_api/types.dart';
+import 'package:anilibria_api/src/types.dart';
 
 class AnilibriaClient with EventMixin {
   final ApiHttpClient _apiHttp;

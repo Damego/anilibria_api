@@ -1,5 +1,5 @@
-import 'package:anilibria_api/consts.dart';
-import 'package:anilibria_api/types.dart';
+import 'package:anilibria_api/src/consts.dart';
+import 'package:anilibria_api/src/types.dart';
 import 'package:anilibria_api/src/http/base_http.dart';
 
 class ApiHttpClient extends BaseHttpClient {

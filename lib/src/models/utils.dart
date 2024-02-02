@@ -1,4 +1,4 @@
-import 'package:anilibria_api/types.dart';
+import 'package:anilibria_api/src/types.dart';
 
 Dict normalizeTitleDescription(Dict json, String? descriptionType) {
   // Вебсокет возвращает описание в виде объекта с тремя полями,

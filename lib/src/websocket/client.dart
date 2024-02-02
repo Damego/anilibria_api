@@ -2,13 +2,12 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:anilibria_api/consts.dart';
+import 'package:anilibria_api/src/consts.dart';
 import 'package:anilibria_api/src/models/events/base_event.dart';
 import 'package:anilibria_api/src/models/events/connect.dart';
 import 'package:anilibria_api/src/models/events/subscription.dart';
 import 'package:anilibria_api/src/models/models.dart' as models;
-import 'package:anilibria_api/types.dart';
-import 'package:http/retry.dart';
+import 'package:anilibria_api/src/types.dart';
 
 Map<String, BaseEvent Function(Dict json)> eventMapping = {
   "playlist_update": models.PlaylistUpdateEvent.fromJson,

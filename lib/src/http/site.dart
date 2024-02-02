@@ -1,5 +1,5 @@
 import 'package:anilibria_api/src/http/base_http.dart';
-import 'package:anilibria_api/types.dart';
+import 'package:anilibria_api/src/types.dart';
 
 class SiteHttpClient extends BaseHttpClient {
   SiteHttpClient(super._baseUrl);

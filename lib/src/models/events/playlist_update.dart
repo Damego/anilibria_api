@@ -1,6 +1,6 @@
 import 'package:anilibria_api/src/models/events/base_event.dart';
 import 'package:anilibria_api/src/models/models.dart';
-import 'package:anilibria_api/types.dart';
+import 'package:anilibria_api/src/types.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'playlist_update.g.dart';
