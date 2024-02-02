@@ -17,7 +17,7 @@ Dict normalizeTitleDescription(Dict json, String? descriptionType) {
 /// Исправляет возможные нелогичные моменты у объекта тайтла
 Dict normalizeTitle(Dict json, String? descriptionType) {
   if (json["description"] != null) {
-    normalizeTitleDescription(json["description"] as Dict, descriptionType);
+    normalizeTitleDescription(json, descriptionType);
   }
   return json;
 }
