@@ -1,10 +1,11 @@
+import 'package:anilibria_api/anilibria_api.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'title_type.g.dart';
 
 @JsonSerializable()
 class TitleType {
-  final int? code;
+  final TitleCodeTypes? code;
   final String? string;
   @JsonKey(name: 'full_string')
   final String? fullString;

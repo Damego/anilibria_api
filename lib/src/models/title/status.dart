@@ -1,3 +1,4 @@
+import 'package:anilibria_api/src/enums.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'status.g.dart';
@@ -5,7 +6,7 @@ part 'status.g.dart';
 @JsonSerializable()
 class Status {
   final String? string;
-  final int? code; // TODO: ENUM
+  final StatusCodes? code;
 
   Status(this.string, this.code);
 

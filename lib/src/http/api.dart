@@ -1,4 +1,5 @@
 import 'package:anilibria_api/src/consts.dart';
+import 'package:anilibria_api/src/enums.dart';
 import 'package:anilibria_api/src/types.dart';
 import 'package:anilibria_api/src/http/base_http.dart';
 
@@ -11,8 +12,8 @@ class ApiHttpClient extends BaseHttpClient {
     int? torrentId,
     List<String>? filter,
     List<String>? remove,
-    List<String>? include,
-    String? descriptionType,
+    List<IncludeTypes>? include,
+    DescriptionTypes? descriptionType,
   }) async {
     var payload = {
       "id": id,
@@ -32,8 +33,8 @@ class ApiHttpClient extends BaseHttpClient {
     List<int>? torrentIdList,
     List<String>? filter,
     List<String>? remove,
-    List<String>? include,
-    String? descriptionType,
+    List<IncludeTypes>? include,
+    DescriptionTypes? descriptionType,
     int? page,
     int? itemsPerPage,
   }) async {
@@ -55,10 +56,10 @@ class ApiHttpClient extends BaseHttpClient {
   Future<Dict> getTitleUpdates({
     List<String>? filter,
     List<String>? remove,
-    List<String>? include,
+    List<IncludeTypes>? include,
     int? limit,
     int? since,
-    String? descriptionType,
+    DescriptionTypes? descriptionType,
     int? page,
     int? itemsPerPage,
   }) async {
@@ -79,10 +80,10 @@ class ApiHttpClient extends BaseHttpClient {
   Future<Dict> getTitleChanges({
     List<String>? filter,
     List<String>? remove,
-    List<String>? include,
+    List<IncludeTypes>? include,
     int? limit,
     int? since,
-    String? descriptionType,
+    DescriptionTypes? descriptionType,
     int? after,
     int? page,
     int? itemsPerPage,
@@ -105,9 +106,9 @@ class ApiHttpClient extends BaseHttpClient {
   Future<List<Dict>> getSchedule({
     List<String>? filter,
     List<String>? remove,
-    List<String>? include,
+    List<IncludeTypes>? include,
     List<int>? days,
-    String? descriptionType,
+    DescriptionTypes? descriptionType,
   }) async {
     var payload = {
       "filter": filter,
@@ -123,8 +124,8 @@ class ApiHttpClient extends BaseHttpClient {
   Future<Dict> getRandomTitle({
     List<String>? filter,
     List<String>? remove,
-    List<String>? include,
-    String? descriptionType,
+    List<IncludeTypes>? include,
+    DescriptionTypes? descriptionType,
   }) async {
     var payload = {
       "filter": filter,
@@ -161,10 +162,10 @@ class ApiHttpClient extends BaseHttpClient {
   Future<Dict> getFeed({
     List<String>? filter,
     List<String>? remove,
-    List<String>? include,
+    List<IncludeTypes>? include,
     int? limit,
     int? since,
-    String? descriptionType,
+    DescriptionTypes? descriptionType,
     int? after,
     int? page,
     int? itemsPerPage,
@@ -209,8 +210,8 @@ class ApiHttpClient extends BaseHttpClient {
     List<String>? timing,
     List<String>? filter,
     List<String>? remove,
-    List<String>? include,
-    String? descriptionType,
+    List<IncludeTypes>? include,
+    DescriptionTypes? descriptionType,
     int? limit,
     int? after,
     String? orderBy,
@@ -246,12 +247,12 @@ class ApiHttpClient extends BaseHttpClient {
   }
 
   Future<Dict> searchTitlesAdvanced({
-    String? query, // required
-    String? simpleQuery, // req
+    String? query,
+    String? simpleQuery,
     List<String>? filter,
     List<String>? remove,
-    List<String>? include,
-    String? descriptionType,
+    List<IncludeTypes>? include,
+    DescriptionTypes? descriptionType,
     int? limit,
     int? after,
     String? orderBy,
@@ -341,7 +342,18 @@ class ApiHttpClient extends BaseHttpClient {
         as Dict;
   }
 
-  // todo: add support for /torrent/rss endpoint
+  Future<String> getTorrentRss(RssTypes rssType, String? session,
+      {int? limit, int? since, int? after}) async {
+    var payload = {
+      "rss_type": rssType.name,
+      "session": session,
+      "limit": limit,
+      "since": since,
+      "after": after,
+    };
+    return await super.request("GET", "/v3/torrent/rss",
+        params: payload, disableResponseDecode: true) as String;
+  }
 
   Future<Dict> getUser(String sessionId) async {
     return await request("GET", "/v3/user", params: {"session": sessionId})
@@ -351,8 +363,8 @@ class ApiHttpClient extends BaseHttpClient {
   Future<Dict> getUserFavorites(String sessionId,
       {List<String>? filter,
       List<String>? remove,
-      List<String>? include,
-      String? descriptionType,
+      List<IncludeTypes>? include,
+      DescriptionTypes? descriptionType,
       int? limit,
       int? after,
       int? page,

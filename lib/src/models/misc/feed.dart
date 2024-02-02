@@ -1,3 +1,4 @@
+import 'package:anilibria_api/src/enums.dart';
 import 'package:anilibria_api/src/models/models.dart';
 import 'package:anilibria_api/src/models/utils.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -12,7 +13,7 @@ class Feed {
   Feed(this.title, this.youtube);
 
   static Feed fromJsonModel(
-      Map<String, dynamic> json, String? descriptionType) {
+      Map<String, dynamic> json, DescriptionTypes? descriptionType) {
     if (json["title"] != null) {
       json["title"] = normalizeTitle(json, descriptionType);
     }

@@ -9,3 +9,4 @@ export 'src/http/api.dart';
 export 'src/http/converters.dart';
 
 export 'src/models/models.dart';
+export 'src/enums.dart';

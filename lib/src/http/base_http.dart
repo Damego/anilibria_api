@@ -25,7 +25,9 @@ class BaseHttpClient {
   }
 
   Future<Object> request(String method, String path,
-      {Map<String, dynamic>? params, Map<String, dynamic>? data}) async {
+      {Map<String, dynamic>? params,
+      Map<String, dynamic>? data,
+      bool disableResponseDecode = false}) async {
     Uri url;
     if (params != null) {
       url = Uri.https(_baseUrl, path, _normalizePayload(params));
@@ -48,6 +50,9 @@ class BaseHttpClient {
       throw Exception("no res");
     }
 
+    if (disableResponseDecode) {
+      return response.body;
+    }
     var decodedData = jsonDecode(response.body);
     catchError(decodedData);
     return decodedData;

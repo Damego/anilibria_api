@@ -1,4 +1,5 @@
 import 'package:anilibria_api/src/client/event_mixin.dart';
+import 'package:anilibria_api/src/enums.dart';
 import 'package:anilibria_api/src/http/api.dart';
 import 'package:anilibria_api/src/http/site.dart';
 import 'package:anilibria_api/src/models/events/base_event.dart';
@@ -31,8 +32,8 @@ class AnilibriaClient with EventMixin {
   Future<ListPagination<Title>> getUserFavorites(String sessionId,
       {List<String>? filter,
       List<String>? remove,
-      List<String>? include,
-      String? descriptionType,
+      List<IncludeTypes>? include,
+      DescriptionTypes? descriptionType,
       int? limit,
       int? after,
       int? page,
@@ -71,8 +72,8 @@ class AnilibriaClient with EventMixin {
     int? torrentId,
     List<String>? filter,
     List<String>? remove,
-    List<String>? include,
-    String? descriptionType,
+    List<IncludeTypes>? include,
+    DescriptionTypes? descriptionType,
   }) async {
     final data = await _apiHttp.getTitle(
         id: id,
@@ -91,8 +92,8 @@ class AnilibriaClient with EventMixin {
     List<int>? torrentIdList,
     List<String>? filter,
     List<String>? remove,
-    List<String>? include,
-    String? descriptionType,
+    List<IncludeTypes>? include,
+    DescriptionTypes? descriptionType,
     int? page,
     int? itemsPerPage,
   }) async {
@@ -113,10 +114,10 @@ class AnilibriaClient with EventMixin {
   Future<ListPagination<Title>> getTitleUpdates({
     List<String>? filter,
     List<String>? remove,
-    List<String>? include,
+    List<IncludeTypes>? include,
     int? limit,
     int? since,
-    String? descriptionType,
+    DescriptionTypes? descriptionType,
     int? page,
     int? itemsPerPage,
   }) async {
@@ -137,10 +138,10 @@ class AnilibriaClient with EventMixin {
   Future<ListPagination<Title>> getTitleChanges({
     List<String>? filter,
     List<String>? remove,
-    List<String>? include,
+    List<IncludeTypes>? include,
     int? limit,
     int? since,
-    String? descriptionType,
+    DescriptionTypes? descriptionType,
     int? after,
     int? page,
     int? itemsPerPage,
@@ -163,9 +164,9 @@ class AnilibriaClient with EventMixin {
   Future<List<Schedule>> getSchedule({
     List<String>? filter,
     List<String>? remove,
-    List<String>? include,
+    List<IncludeTypes>? include,
     List<int>? days,
-    String? descriptionType,
+    DescriptionTypes? descriptionType,
   }) async {
     final data = await _apiHttp.getSchedule(
       filter: filter,
@@ -182,8 +183,8 @@ class AnilibriaClient with EventMixin {
   Future<Title> getRandomTitle({
     List<String>? filter,
     List<String>? remove,
-    List<String>? include,
-    String? descriptionType,
+    List<IncludeTypes>? include,
+    DescriptionTypes? descriptionType,
   }) async {
     final data = await _apiHttp.getRandomTitle(
       filter: filter,
@@ -208,8 +209,8 @@ class AnilibriaClient with EventMixin {
     List<String>? timing,
     List<String>? filter,
     List<String>? remove,
-    List<String>? include,
-    String? descriptionType,
+    List<IncludeTypes>? include,
+    DescriptionTypes? descriptionType,
     int? limit,
     int? after,
     String? orderBy,
@@ -249,8 +250,8 @@ class AnilibriaClient with EventMixin {
     String? simpleQuery,
     List<String>? filter,
     List<String>? remove,
-    List<String>? include,
-    String? descriptionType,
+    List<IncludeTypes>? include,
+    DescriptionTypes? descriptionType,
     int? limit,
     int? after,
     String? orderBy,
@@ -338,10 +339,10 @@ class AnilibriaClient with EventMixin {
   Future<ListPagination<Feed>> getFeed({
     List<String>? filter,
     List<String>? remove,
-    List<String>? include,
+    List<IncludeTypes>? include,
     int? limit,
     int? since,
-    String? descriptionType,
+    DescriptionTypes? descriptionType,
     int? after,
     int? page,
     int? itemsPerPage,

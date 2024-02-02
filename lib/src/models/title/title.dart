@@ -1,3 +1,4 @@
+import 'package:anilibria_api/src/enums.dart';
 import 'package:anilibria_api/src/models/models.dart';
 import 'package:anilibria_api/src/models/utils.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -48,7 +49,8 @@ class Title {
     this.franchises,
   );
 
-  static fromJsonModel(Map<String, dynamic> json, String? descriptionType) {
+  static fromJsonModel(
+      Map<String, dynamic> json, DescriptionTypes? descriptionType) {
     return Title.fromJson(normalizeTitle(json, descriptionType));
   }
 
