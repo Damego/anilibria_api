@@ -1,18 +1,22 @@
 import 'dart:convert';
 
+import 'package:anilibria_api/src/client/event_mixin.dart';
 import 'package:anilibria_api/src/http/api.dart';
 import 'package:anilibria_api/src/http/site.dart';
 import 'package:anilibria_api/src/models/events/base_event.dart';
 import 'package:anilibria_api/src/models/models.dart';
+import 'package:anilibria_api/src/websocket/client.dart';
 import 'package:anilibria_api/types.dart';
 
-class AnilibriaClient {
+class AnilibriaClient with EventMixin {
   final ApiHttpClient _apiHttp;
   final SiteHttpClient _siteHttp;
+  final WebSocketClient _websocket;
 
   AnilibriaClient({String? siteUrl})
       : _apiHttp = ApiHttpClient(),
-        _siteHttp = SiteHttpClient(siteUrl ?? "test.anilib.top"); // TODO
+        _siteHttp = SiteHttpClient(siteUrl ?? "test.anilib.top"), // TODO
+        _websocket = WebSocketClient();
 
   // * User region
 
@@ -403,4 +407,12 @@ class AnilibriaClient {
   }
 
   // * Torrent end region
+
+  // * Websockets
+
+  Future<void> connect() async {
+    await _websocket.connect();
+  }
+
+  late final Stream<BaseEvent> events = _websocket.events;
 }
