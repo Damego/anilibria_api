@@ -1,9 +1,10 @@
+import 'package:anilibria_api/src/models/events/base_event.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'subscription.g.dart';
 
 @JsonSerializable()
-class SubscriptionEvent {
+class SubscriptionEvent implements BaseEvent {
   final int? subscribe;
   @JsonKey(name: "subscription_id")
   final int? subscriptionId;

@@ -1,3 +1,4 @@
+import 'package:anilibria_api/src/models/events/base_event.dart';
 import 'package:anilibria_api/src/models/models.dart';
 import 'package:anilibria_api/types.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -5,8 +6,8 @@ import 'package:json_annotation/json_annotation.dart';
 part 'torrent_update.g.dart';
 
 @JsonSerializable()
-class TorrentUpdateEvent {
-  final int? id;
+class TorrentUpdateEvent implements BaseEvent {
+  final String? id;
   final Torrents? torrents;
   @JsonKey(name: "updated_torrent_id")
   final int? updatedTorrentId;

@@ -6,7 +6,7 @@ part 'encode_progress.g.dart';
 @JsonSerializable()
 class EncodeProgressEvent extends EncodeEvent {
   @JsonKey(name: "encoded_percent")
-  final bool? encodedPercent;
+  final String? encodedPercent;
 
   EncodeProgressEvent(this.encodedPercent, super.id, super.episode,
       super.resolution, super.quality);

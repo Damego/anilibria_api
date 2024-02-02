@@ -1,9 +1,10 @@
+import 'package:anilibria_api/src/models/events/base_event.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'base_encode.g.dart';
 
 @JsonSerializable()
-class BaseEncodeEvent {
+class BaseEncodeEvent implements BaseEvent {
   final String? id;
   final String? episode;
 

@@ -8,7 +8,7 @@ part of 'torrent_update.dart';
 
 TorrentUpdateEvent _$TorrentUpdateEventFromJson(Map<String, dynamic> json) =>
     TorrentUpdateEvent(
-      json['id'] as int?,
+      json['id'] as String?,
       json['torrents'] == null
           ? null
           : Torrents.fromJson(json['torrents'] as Map<String, dynamic>),

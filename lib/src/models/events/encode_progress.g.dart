@@ -8,7 +8,7 @@ part of 'encode_progress.dart';
 
 EncodeProgressEvent _$EncodeProgressEventFromJson(Map<String, dynamic> json) =>
     EncodeProgressEvent(
-      json['encoded_percent'] as bool?,
+      json['encoded_percent'] as String?,
       json['id'] as String?,
       json['episode'] as String?,
       json['resolution'] as String?,

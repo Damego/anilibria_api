@@ -32,3 +32,13 @@ export 'torrent/torrent_metadata.dart';
 export 'torrent/torrents.dart';
 
 export 'user/user.dart';
+
+export 'events/encode_end.dart';
+export 'events/encode_finish.dart';
+export 'events/encode_progress.dart';
+export 'events/encode_start.dart';
+export 'events/playlist_update.dart';
+export 'events/subscription.dart';
+export 'events/title_update.dart';
+export 'events/torrent_update.dart';
+export 'events/connect.dart';

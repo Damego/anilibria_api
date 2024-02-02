@@ -15,7 +15,7 @@ PlaylistUpdateEvent _$PlaylistUpdateEventFromJson(Map<String, dynamic> json) =>
       json['updated_episode'] == null
           ? null
           : Episode.fromJson(json['updated_episode'] as Map<String, dynamic>),
-      json['episode'] as int?,
+      json['episode'] as String?,
       json['diff'] as Map<String, dynamic>?,
       json['reupload'] as bool?,
     );

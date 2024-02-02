@@ -1,3 +1,4 @@
+import 'package:anilibria_api/src/models/events/base_event.dart';
 import 'package:anilibria_api/src/models/models.dart';
 import 'package:anilibria_api/types.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -5,12 +6,12 @@ import 'package:json_annotation/json_annotation.dart';
 part 'playlist_update.g.dart';
 
 @JsonSerializable()
-class PlaylistUpdateEvent {
+class PlaylistUpdateEvent implements BaseEvent {
   final int? id;
   final Player? player;
   @JsonKey(name: "updated_episode")
   final Episode? updatedEpisode;
-  final int? episode;
+  final String? episode;
   final Dict? diff;
   @JsonKey(name: "reupload")
   final bool? isReupload;
