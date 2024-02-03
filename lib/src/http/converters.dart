@@ -1,12 +1,8 @@
 import 'package:anilibria_api/src/enums.dart';
 
-String convertListToString(List<Object> list) {
-  return list.join(",");
-}
-
 String stringifyObject(Object object) {
   if (object is List) {
-    return convertListToString(object as List<Object>);
+    return [for (final obj in object) stringifyObject(obj)].join(",");
   }
   if (object is DescriptionTypes) {
     return object.apiName;
